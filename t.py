@@ -66,7 +66,8 @@ discriminator = Discriminator().to(device)
 criterion = nn.BCELoss()
 optimizer_G = torch.optim.Adam(generator.parameters(), lr=learning_rate)
 optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=learning_rate)
-
+if not os.path.exists('images'):
+    os.makedirs('images')
 # Trainingsschleife
 for epoch in range(num_epochs):
     for i, (imgs, _) in enumerate(train_loader):
@@ -93,6 +94,7 @@ for epoch in range(num_epochs):
 
     # Generierte Bilder nach jeder Epoche speichern
     if epoch % 10 == 0:
+        
         save_image(fake_imgs.data[:25], f"images/{epoch}_fake.png", nrow=5, normalize=True)
 
 # Verzeichnis für die generierten Bilder erstellen
