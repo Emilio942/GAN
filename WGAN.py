@@ -14,7 +14,7 @@ lr = 0.00005
 latent_dim = 100
 n_critic = 5
 clip_value = 0.01  # Weight clipping value
-num_epochs = 50
+num_epochs = 50 # 5000
 image_size = 28 * 28
 
 # MNIST Datensatz
