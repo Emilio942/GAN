@@ -62,12 +62,21 @@ class Discriminator(nn.Module):
 generator = Generator().to(device)
 discriminator = Discriminator().to(device)
 
+# Zustand des Generators und Diskriminators laden, falls vorhanden
+if os.path.isfile('generator_state.pth'):
+    generator.load_state_dict(torch.load('generator_state.pth'))
+if os.path.isfile('discriminator_state.pth'):
+    discriminator.load_state_dict(torch.load('discriminator_state.pth'))
+
 # Verlustfunktion und Optimierer
 criterion = nn.BCELoss()
 optimizer_G = torch.optim.Adam(generator.parameters(), lr=learning_rate)
 optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=learning_rate)
+
+# Verzeichnis für die generierten Bilder erstellen, falls nicht vorhanden
 if not os.path.exists('images'):
     os.makedirs('images')
+
 # Trainingsschleife
 for epoch in range(num_epochs):
     for i, (imgs, _) in enumerate(train_loader):
@@ -94,9 +103,9 @@ for epoch in range(num_epochs):
 
     # Generierte Bilder nach jeder Epoche speichern
     if epoch % 10 == 0:
-        
         save_image(fake_imgs.data[:25], f"images/{epoch}_fake.png", nrow=5, normalize=True)
 
-# Verzeichnis für die generierten Bilder erstellen
-if not os.path.exists('images'):
-    os.makedirs('images')
+    # Modellzustände speichern
+    if (epoch + 1) % 50 == 0:
+        torch.save(generator.state_dict(), 'generator_state.pth')
+        torch.save(discriminator.state_dict(), 'discriminator_state.pth')
