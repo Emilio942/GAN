@@ -2,7 +2,7 @@
 
 This project is about [Brief Description of Your Project's Purpose]. The visualization below serves as a conceptual overview of what this script achieves and its significance.
 
-![Alt text for your image](DALL·E 2024-03-12 08.55.55 - An epic scene showcasing two titans clashing in a grand arena, each embodying the spirit of different computational models. On one side, a colossal fi.webp)
+![Alt text for your image](Emilio942/GAN/b.webp)
 
 ## Concept Overview
 
