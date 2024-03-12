@@ -2,7 +2,7 @@
 
 This project is about [Brief Description of Your Project's Purpose]. The visualization below serves as a conceptual overview of what this script achieves and its significance.
 
-![Alt text for your image](Emilio942/GAN/b.webp)
+![Alt text for your image](b.webp)
 
 ## Concept Overview
 
